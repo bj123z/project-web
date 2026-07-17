@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finished Projects — Isabella Jin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page-projects">
+    <header>
+      <a href="index.html" class="site-title">Isabella Jin</a>
+      <div class="header-actions">
+        <nav>
+          <a href="finished-projects.html" data-i18n="navProjects">Finished Projects</a>
+          <a href="ideas-in-progress.html" data-i18n="navIdeas">Ideas In-Progress</a>
+          <a href="about.html" data-i18n="navAbout">About</a>
+          <a href="contact.html" data-i18n="navContact">Contact</a>
+        </nav>
+        <button type="button" id="lang-switch" aria-label="Switch language">
+          中文
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="finished-projects">
+        <h1 data-i18n="projectsTitle">Finished Projects</h1>
+
+        <div class="timeline-layout">
+          <aside class="timeline-sidebar" id="timeline-sidebar" aria-label="Project timeline">
+            <!-- Filled by projects.js -->
+          </aside>
+
+          <div class="timeline-preview">
+            <div class="preview-images" id="preview-images"></div>
+            <p class="preview-date" id="preview-date"></p>
+            <h2 class="preview-title" id="preview-title"></h2>
+            <p class="preview-description" id="preview-description"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Isabella Jin</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="projects.js"></script>
+  </body>
+</html>

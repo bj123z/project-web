@@ -1,0 +1,349 @@
+/* Load the font from your project (does not need Google Fonts) */
+@font-face {
+  font-family: "Noto Serif Display";
+  src: url("fonts/noto-serif-display.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Design tokens — shared colors and fonts for the whole site */
+:root {
+  --ink: #1d1d1f;
+  --muted: #6e6e73;
+  --paper: #d4d4c3;
+  --line: #d2d2d7;
+  /* English uses the 1st font; Chinese uses Noto Serif SC */
+  --font: "Noto Serif Display", "Noto Serif SC", "PingFang SC", "Microsoft YaHei", Georgia, serif;
+
+  /* Golden-ratio type scale (φ ≈ 1.618) */
+  --phi: 1.618;
+  --text-xs: calc(1rem / sqrt(var(--phi))); /* ~0.786rem — dates, footer */
+  --text-sm: 1rem; /* body, nav, descriptions */
+  --text-md: calc(1rem * var(--phi)); /* ~1.618rem — site title, project title */
+  --text-lg: calc(1rem * var(--phi) * var(--phi)); /* ~2.618rem — page titles */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-weight: 400;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at top, #ffffff 0%, transparent 55%),
+    linear-gradient(180deg, #dfded6 0%, #c4c4b8 100%);
+  line-height: 1.6;
+}
+
+/* Soft page width + breathing room (Japanese minimal: lots of space) */
+body {
+  padding: 2rem 1.5rem 4rem;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.site-title {
+  margin: 0;
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-title:hover {
+  color: var(--ink);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: var(--text-sm);
+}
+
+nav a:hover {
+  color: var(--ink);
+}
+
+/* Looks like a quiet text control, not a big button */
+#lang-switch {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: var(--text-sm);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+#lang-switch:hover {
+  color: var(--ink);
+}
+
+#intro h1,
+main > section > h1 {
+  font-size: clamp(var(--text-md), 5vw, var(--text-lg));
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+}
+
+#intro p {
+  color: var(--muted);
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+section {
+  margin-bottom: 4rem;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: var(--text-md);
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--ink);
+}
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: var(--text-xs);
+}
+
+/* Wider layout for the projects page */
+body.page-projects {
+  max-width: 1200px;
+}
+
+.timeline-layout {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin-top: 2.5rem;
+}
+
+.timeline-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--line);
+}
+
+.timeline-month {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.timeline-month::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.25rem - 4px);
+  top: 0.35rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.timeline-month:has(.timeline-item.is-active)::before,
+.timeline-month:has(.timeline-item:hover)::before {
+  background: var(--ink);
+  transform: scale(1.15);
+}
+
+.timeline-month-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.timeline-item {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.timeline-item::before {
+  display: none;
+}
+
+.timeline-date {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.timeline-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  opacity: 0.55;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.timeline-item.is-active .timeline-thumb,
+.timeline-item:hover .timeline-thumb {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.timeline-preview {
+  position: sticky;
+  top: 2rem;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.timeline-preview.is-fading {
+  opacity: 0;
+}
+
+.preview-images {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  align-items: stretch;
+}
+
+.preview-images--multi {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.preview-image-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.preview-images--multi .preview-image-frame {
+  aspect-ratio: var(--preview-aspect, 1 / 1);
+}
+
+.preview-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.preview-images--multi .preview-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.preview-images--multi.preview-images--landscape .preview-image {
+  object-position: center center;
+}
+
+.preview-date {
+  margin: 0 0 0.5rem;
+  font-size: var(--text-xs);
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.preview-title {
+  margin: 0 0 0.75rem;
+  font-size: var(--text-md);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.preview-description {
+  margin: 0;
+  max-width: none;
+  color: var(--muted);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+  .timeline-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .timeline-sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+    padding-left: 0;
+    padding-bottom: 1rem;
+  }
+
+  .timeline-month {
+    flex-shrink: 0;
+  }
+
+  .timeline-month::before {
+    display: none;
+  }
+
+  .timeline-month-items {
+    flex-direction: row;
+  }
+
+  .preview-images--multi {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-thumb {
+    width: 72px;
+  }
+}
+
+.about-photo {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}

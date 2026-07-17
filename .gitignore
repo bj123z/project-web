@@ -1,0 +1,11 @@
+# Local Python practice (not part of the website)
+python-exercises/
+
+# Python tooling / caches
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# macOS
+.DS_Store

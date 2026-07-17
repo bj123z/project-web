@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#dedcd5"/>
+  <rect x="200" y="100" width="180" height="400" rx="8" fill="#cac6be"/>
+  <rect x="420" y="160" width="180" height="340" rx="8" fill="#cac6be"/>
+  <text x="400" y="540" text-anchor="middle" fill="#8a8a85" font-family="Georgia, serif" font-size="28">Project 3</text>
+</svg>

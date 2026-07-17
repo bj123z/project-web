@@ -34,8 +34,8 @@ const finishedProjects = [
   {
     monthKey: "2026-06",
     completed: { en: "June 2026", zh: "2026年6月" },
-    image: "images/MousepadSv1.png",
-    images: ["images/MousepadSv1.png","images/MousepadSv2.png"],
+    image: "images/MousepadSv1.jpg",
+    images: ["images/MousepadSv1.jpg", "images/MousepadSv2.jpg"],
     en: {
       title: "Mousepad (Small ver.)",
       description:
@@ -49,8 +49,8 @@ const finishedProjects = [
   {
     monthKey: "2026-06",
     completed: { en: "June 2026", zh: "2026年6月" },
-    image: "images/penholderv1.png",
-    images: ["images/penholderv1.png","images/penholderv2.png"],
+    image: "images/penholderv1.jpg",
+    images: ["images/penholderv1.jpg", "images/penholderv2.jpg"],
     en: {
       title: "Metallic Stationary Holder connected to PC",
       description:
@@ -156,6 +156,8 @@ function renderTimelineSidebar() {
           class="timeline-thumb"
           src="${thumbSrc}"
           alt="${project[lang].title}"
+          loading="lazy"
+          decoding="async"
         />
       `;
 

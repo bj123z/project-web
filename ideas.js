@@ -85,6 +85,8 @@ function renderTimelineSidebar() {
           class="timeline-thumb"
           src="${thumbSrc}"
           alt="${idea[lang].title}"
+          loading="lazy"
+          decoding="async"
         />
       `;
 

@@ -7,5 +7,8 @@ __pycache__/
 .pytest_cache/
 *.pyc
 
+# Local image originals (not for the live site)
+images/_backup_originals/
+
 # macOS
 .DS_Store
